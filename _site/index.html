@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog do Camilo</title>
+  <meta name="description" content="Posts técnicos.">
+  
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- LATEX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+  
+  <!-- FONT AWESOME -->
+  <script src="https://kit.fontawesome.com/d59c1ac2c9.js" crossorigin="anonymous"></script>
+  
+  <link
+			href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css"
+			rel="stylesheet"
+		/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+
+  <!-- Apply dark mode before rendering to avoid white flash -->
+  <script>
+    (function() {
+      const darkMode = localStorage.getItem('darkMode');
+      if (darkMode === 'enabled') {
+        document.documentElement.classList.add('dark-mode');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/posts/palestras.md">Palestras</a></li>
+      <li><a href="/posts/favoritos.md">Favoritos</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="dark-mode-toggle" id="dark-mode-toggle">🌙</button>
+      <select class="language-select" id="language-select">
+        <option value="en">EN</option>
+        <option value="pt">PT</option>
+      </select>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <h1>Blog do Camilo</h1>
+
+Eu sou um Engenheiro de Software com 29 anos que mora no Brasil.
+
+<h2>Posts</h2>
+<table>
+  <!-- Apenas por organização 
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Título</th>
+    </tr>
+  </thead>
+  -->
+  <tbody>
+    
+    <tr>
+      <td>2024-06-15</td>
+      <td><a href="/post_1_awesome_wm/">Awesome WM, meu Window Manager preferido</a></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>🄯  Camilo de Azevedo</p>
+    <nav>
+      <ul class="social-links">
+        <li>
+          <a href="https://github.com/Camilotk" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/2cazevedo/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://bsky.app/profile/camilotk.dev.br" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-bluesky"></i>
+          </a>
+        </li>
+        <li>
+          <a href="/rss.xml" target="_blank" rel="noopener noreferrer">
+            <i class="fa-solid fa-rss"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
+
+  <!-- JavaScript for Dark Mode and Language Selection -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const toggleButton = document.getElementById('dark-mode-toggle');
+      const languageSelect = document.getElementById('language-select');
+      const body = document.documentElement; // Use <html> instead of <body> for better control
+
+      // Initialize dark mode toggle
+      const darkMode = localStorage.getItem('darkMode');
+      if (darkMode === 'enabled') {
+        body.classList.add('dark-mode');
+      }
+
+      // Toggle dark mode on button click
+      toggleButton.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        // Save the user's preference to localStorage
+        if (body.classList.contains('dark-mode')) {
+          localStorage.setItem('darkMode', 'enabled');
+        } else {
+          localStorage.setItem('darkMode', 'disabled');
+        }
+      });
+
+      // Language selection
+      languageSelect.addEventListener('change', () => {
+        const selectedLang = languageSelect.value;
+        window.location.href = `/${selectedLang}/`;
+      });
+      
+      // Render LaTeX after DOM is ready
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false},
+          {left: "\\(", right: "\\)", display: false},
+          {left: "\\[", right: "\\]", display: true}
+        ]
+      });
+    });
+  </script>
+
+  <!-- LATEX -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+</body>
+</html>

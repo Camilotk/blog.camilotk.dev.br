@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awesome WM, meu Window Manager preferido</title>
+  <meta name="description" content="">
+  
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- LATEX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+  
+  <!-- FONT AWESOME -->
+  <script src="https://kit.fontawesome.com/d59c1ac2c9.js" crossorigin="anonymous"></script>
+  
+  <link
+			href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css"
+			rel="stylesheet"
+		/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+
+  <!-- Apply dark mode before rendering to avoid white flash -->
+  <script>
+    (function() {
+      const darkMode = localStorage.getItem('darkMode');
+      if (darkMode === 'enabled') {
+        document.documentElement.classList.add('dark-mode');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/posts/palestras.md">Palestras</a></li>
+      <li><a href="/posts/favoritos.md">Favoritos</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="dark-mode-toggle" id="dark-mode-toggle">🌙</button>
+      <select class="language-select" id="language-select">
+        <option value="en">EN</option>
+        <option value="pt">PT</option>
+      </select>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <article>
+  <header>
+    <h1>Awesome WM, meu Window Manager preferido</h1>
+    <p class="post-info">Sat Jun 15 2024 19:39:00 GMT-0300 (Horário Padrão de Brasília)</p>
+  </header>
+  <section>
+    <p>O Awesome WM é o meu gerenciador de janelas preferido, ele é altamente configurável e dinâmico para sistemas Linux, projetado para usuários que buscam um ambiente gráfico eficiente e adaptável. Ao contrário dos gerenciadores de janelas tradicionais como o i3, o Awesome permite uma personalização extensa através de scripts em Lua, o que é muito interessante já que Lua além de ser uma linguagem leve e simples pode ser usada para qualquer tarefa de próposito geral.</p>
+<h3>Instalando o Awesome WM</h3>
+<p>Para instalar o Awesome WM na sua distribuição Linux, você pode seguir as instruções na <a href="https://awesomewm.org/download/">documentação do site oficial</a>. Caso você esteja usando Debian, basta instalar através do aptitude (apt).</p>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> awesome</code></pre>
+<p>O Debian também disponibiliza um pacote chamado <a href="https://packages.debian.org/sid/awesome-extra">awesome-extra</a> que contém diversos plugins e extensões do Awesome WM, como ícones de monitoramento de bateria e volume, instalação de novos plugins e outros que podem ser úteis.</p>
+<h3>Iniciando com o Awesome WM</h3>
+<p>Depois de instalar o Awesome na sua distribuição Linux preferida, o próximo passo é logar no novo ambiente gráfico através do seu gerenciador de inicialização (display manager), como LightDM ou GDM, normalmente clicando em um botão no canto superior direito ou abaixo das credenciais de login e selecionando &quot;Awesome WM&quot;.</p>
+<p>Após logar pela primeira vez, você verá uma tela mais ou menos assim:
+&lt;<imagem>&gt;</p>
+<p>Aqui, é interessante que você aprenda alguns comandos úteis:</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Win + S</td>
+<td>Abre um menu com todos os atalhos configurados no seu Window Manager.</td>
+</tr>
+<tr>
+<td>Win + Enter</td>
+<td>Abre um terminal.</td>
+</tr>
+<tr>
+<td>Win + P</td>
+<td>Executa um programa; é necessário digitar o nome dele e pressionar Enter.</td>
+</tr>
+<tr>
+<td>Win + Shift + C</td>
+<td>Fecha um programa.</td>
+</tr>
+<tr>
+<td>Win + número</td>
+<td>Muda para a tela número.</td>
+</tr>
+<tr>
+<td>Win + Shift + número</td>
+<td>Move o programa para a tela número.</td>
+</tr>
+</tbody>
+</table>
+<p>Com esses seis comandos básicos, você já conseguirá usar plenamente o novo ambiente. Recomendo usar a documentação no menu de ajuda (Win + S) sempre que tiver dúvidas ou esquecer um atalho; essa é uma função muito útil do Awesome que ajuda muito quem está começando com Window Managers.</p>
+<h3>Criando o arquivo de configuração</h3>
+<p>O Awesome é configurado através de um script Lua chamado <strong>rc.lua</strong>. Esse script não é automaticamente criado ao instalarmos o WM, mas ele vem com uma cópia do arquivo padrão que é carregado na primeira vez que logamos e quando há algum erro no script customizado que impeça sua execução.</p>
+<p>Precisamos encontrá-lo em nosso sistema; para isso, podemos usar comandos como <strong>find</strong> ou <strong>locate</strong> para encontrar o arquivo <code>rc.lua</code> em nosso computador.</p>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">find</span> / <span class="token parameter variable">-name</span> rc.lua
+ou
+$ <span class="token function">locate</span> rc.lua</code></pre>
+<p>Deve aparecer que há um arquivo como <code>/usr/share/awesome/lib/tyrannical/example.rc.lua</code> ou <code>/etc/xdg/awesome/rc.lua</code> (no meu caso). Independentemente do caminho ou nome, esses são arquivos de exemplo e configuração básica do Awesome WM (ambos com o mesmo conteúdo). Podemos criar uma cópia deles para iniciar nossa primeira configuração.</p>
+<p>A configuração do Awesome WM geralmente fica em <code>~/.config/awesome/rc.lua</code>. É provável que seu computador ainda não tenha a pasta <code>awesome</code>, então precisamos primeiro criá-la.</p>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> ~/.config/awesome</code></pre>
+<p>Então, podemos copiar a configuração base/de exemplo para lá.</p>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">cp</span> /etc/xdg/awesome/rc.lua ~/.config/awesome</code></pre>
+<p>Caso não encontre esse arquivo ou precise dele e não consiga, ele também está disponível na documentação da ferramenta e pode ser consultado <a href="https://awesomewm.org/doc/api/sample%20files/rc.lua.html">aqui</a>. Você pode copiá-lo e usá-lo como configuração básica.</p>
+<h3>Primeiras configurações</h3>
+<p>A primeira mudança que faço sempre é trocar o terminal padrão para o meu favorito, o Alacritty. Para isso, altero a variável <code>terminal</code> para o valor string que deve ser executado.</p>
+<pre class="language-lua"><code class="language-lua">terminal <span class="token operator">=</span> <span class="token string">"alacritty"</span></code></pre>
+<p>Depois de alterar esse valor para o seu emulador de terminal preferido e salvar, é preciso executar o comando <code>Ctrl + Win + r</code>, que recarregará o WM aplicando as mudanças feitas. Então, é só usar <code>Win + Enter</code> e verificar se o seu terminal de escolha está abrindo no lugar do xterm.</p>
+<p>A próxima mudança básica que faço é ajustar os padrões de &quot;tiling&quot; das janelas. O Awesome já vem com vários padrões instalados por padrão, diferente de outras que você precisa baixar e instalar separadamente. No entanto, ele vem com uma grande quantidade deles habilitados e uma ordem de preferência padrão. Eu pessoalmente não gosto do padrão 'floating', que deixa as janelas como em um Desktop Environment comum como Gnome ou KDE, nem costumo usar padrões como 'fair' ou 'spiral'. Para deixar apenas os padrões que uso na ordem de preferência, basta comentar os padrões que não uso e reordenar a posição dos valores no array/table <code>layouts</code>.</p>
+<pre class="language-lua"><code class="language-lua">awful<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>layouts <span class="token operator">=</span> <span class="token punctuation">{</span>
+    awful<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>suit<span class="token punctuation">.</span>tile<span class="token punctuation">,</span>
+    awful<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>suit<span class="token punctuation">.</span>tile<span class="token punctuation">.</span>left<span class="token punctuation">,</span>
+    awful<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>suit<span class="token punctuation">.</span>tile<span class="token punctuation">.</span>bottom<span class="token punctuation">,</span>
+    awful<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>suit<span class="token punctuation">.</span>tile<span class="token punctuation">.</span>top<span class="token punctuation">,</span>
+    awful<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>suit<span class="token punctuation">.</span>floating<span class="token punctuation">,</span>
+    <span class="token comment">-- awful.layout.suit.fair,</span>
+    <span class="token comment">-- awful.layout.suit.fair.horizontal,</span>
+    <span class="token comment">-- awful.layout.suit.spiral,</span>
+    <span class="token comment">-- awful.layout.suit.spiral.dwindle,</span>
+    <span class="token comment">-- awful.layout.suit.max,</span>
+    <span class="token comment">-- awful.layout.suit.max.fullscreen,</span>
+    <span class="token comment">-- awful.layout.suit.magnifier,</span>
+    <span class="token comment">-- awful.layout.suit.corner.nw,</span>
+    <span class="token comment">-- awful.layout.suit.corner.ne,</span>
+    <span class="token comment">-- awful.layout.suit.corner.sw,</span>
+    <span class="token comment">-- awful.layout.suit.corner.se,</span>
+<span class="token punctuation">}</span></code></pre>
+<p>A próxima mudança básica que faço é alterar as &quot;TAGs&quot; dos ambientes de trabalho (esses que mudamos com Win + número). Cada pessoa tem uma preferência diferente; algumas usam palavras como &quot;código&quot;, &quot;navegador&quot;, outras preferem números ou ícones SVG. Você pode mudar isso alterando a linha:</p>
+<pre class="language-lua"><code class="language-lua">awful<span class="token punctuation">.</span><span class="token function">tag</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token string">"2"</span><span class="token punctuation">,</span> <span class="token string">"3"</span><span class="token punctuation">,</span> <span class="token string">"4"</span><span class="token punctuation">,</span> <span class="token string">"5"</span><span class="token punctuation">,</span> <span class="token string">"6"</span><span class="token punctuation">,</span> <span class="token string">"7"</span><span class="token punctuation">,</span> <span class="token string">"8"</span><span class="token punctuation">,</span> <span class="token string">"9"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> s<span class="token punctuation">,</span> awful<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>layouts<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p>No meu caso, normalmente só diminuo o número de TAGs porque raramente uso tantos espaços de trabalho. Basicamente, deixo apenas 5.</p>
+<pre class="language-lua"><code class="language-lua">awful<span class="token punctuation">.</span><span class="token function">tag</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string">"I"</span><span class="token punctuation">,</span> <span class="token string">"II"</span><span class="token punctuation">,</span> <span class="token string">"III"</span><span class="token punctuation">,</span> <span class="token string">"IV"</span><span class="token punctuation">,</span> <span class="token string">"V"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> s<span class="token punctuation">,</span> awful<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>layouts<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p>Outra coisa que gosto de fazer é adicionar alguns atalhos para os programas que mais uso. Isso também é muito pessoal, mas um programa que tenho certeza que todo mundo usa bastante é o navegador, no meu caso o Brave. Vamos criar um atalho para abrir o Brave com <code>Win + b</code>. Para isso, procure uma seção da configuração que contém diversos <code>awful.key</code>; esse é o comando para criar novos atalhos.</p>
+<p>Ali, você notará que já existem vários atalhos criados. Todos podem ser consultados quando usa o atalho de ajuda <code>Win + S</code>. Eles estão organizados por sessão e você pode mudar isso para como preferir. Para inserir um novo comando, basta adicionar mais uma chamada para <code>awful.key</code>.</p>
+<pre class="language-lua"><code class="language-lua">awful<span class="token punctuation">.</span><span class="token function">key</span><span class="token punctuation">(</span><span class="token punctuation">{</span> modkey<span class="token punctuation">,</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> awful<span class="token punctuation">.</span><span class="token function">spawn</span><span class="token punctuation">(</span><span class="token string">"brave-browser"</span><span class="token punctuation">)</span> <span class="token keyword">end</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>description <span class="token operator">=</span> <span class="token string">"open a browser"</span><span class="token punctuation">,</span> group <span class="token operator">=</span> <span class="token string">"launcher"</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span></code></pre>
+<p>Agora, salve e use o comando para recarregar o WM. Após isso, se usar <code>Win + b</code>, o navegador deve abrir.</p>
+<blockquote>
+<p>Dica: Sempre use <strong>description</strong> e <strong>group</strong> para especificar o que seu comando faz. Isso adiciona essa descrição no menu de ajuda <code>Win + S</code>, o que sempre ajuda a lembrar o que cada comando faz, se você mantiver isso organizado e preenchido.</p>
+</blockquote>
+<p>Por fim, entre as coisas super básicas que mudo na minha configuração do Awesome, está remover os títulos das janelas. Eles podem ser úteis para quem está começando, mas acho que são feios e ocupam espaço. Para mudar isso, basta alterar a propriedade <code>titlebars_enabled</code> para <code>false</code>.</p>
+<pre class="language-lua"><code class="language-lua"><span class="token comment">-- Add titlebars to normal clients and dialogs</span>
+<span class="token punctuation">{</span> rule_any <span class="token operator">=</span> <span class="token punctuation">{</span>type <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"normal"</span><span class="token punctuation">,</span> <span class="token string">"dialog"</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> properties <span class="token operator">=</span> <span class="token punctuation">{</span> titlebars_enabled <span class="token operator">=</span> <span class="token keyword">false</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
+<p>Depois dessas alterações, o Awesome já está pelo menos &quot;usável&quot;. Temos nossos ambientes (tags) configurados, alguns programas preferidos nos atalhos, os padrões de tiling ajustados e nos livramos das barras de janela feias e que ocupam espaço. O próximo passo é criar nosso próprio tema para deixar o Awesome com a aparência que queremos.</p>
+<h3>Criando o primeiro tema para o Awesome</h3>
+<p>Além do arquivo <strong>rc.lua</strong>, que é usado para as configurações do Awesome, geralmente também temos um arquivo <strong>theme.lua</strong>, onde configuramos coisas como wallpaper, cor da barra, configuração dos widgets de bateria e outros. Uma prática comum é criar o arquivo com o nome do tema, ao invés de &quot;theme&quot;. O Awesome também tem um tema padrão que é carregado em caso de necessidade e que podemos copiar como base. Novamente, vamos usar o comando <strong>find</strong> ou <strong>locate</strong> para encontrar esse arquivo.</p>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">locate</span> theme.lua</code></pre>
+<p>Esse arquivo estará em algo como <code>/usr/share/awesome/themes/default/theme.lua</code>. Podemos simplesmente copiá-lo com o nome que você quer dar para o seu tema</p>
+<p>. Supondo que o nome desejado seja &quot;MeuTema&quot;, copie o arquivo da seguinte forma.</p>
+<pre class="language-bash"><code class="language-bash">$ <span class="token function">cp</span> /usr/share/awesome/themes/default/theme.lua ~/.config/awesome/themes/MeuTema.lua</code></pre>
+<p>Depois, precisamos alterar a linha do arquivo <strong>rc.lua</strong> que especifica o tema para usar o nosso novo tema.</p>
+<pre class="language-lua"><code class="language-lua">beautiful<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>awful<span class="token punctuation">.</span>util<span class="token punctuation">.</span><span class="token function">getdir</span><span class="token punctuation">(</span><span class="token string">"config"</span><span class="token punctuation">)</span> <span class="token operator">..</span> <span class="token string">"/themes/MeuTema.lua"</span><span class="token punctuation">)</span></code></pre>
+<p>Agora, você pode abrir e editar o novo arquivo do tema com seu editor de texto preferido.</p>
+<p>Para mudar a aparência da barra superior, você pode alterar propriedades como a cor de fundo e da fonte do título. A seguir, um exemplo básico de alterações de cores.</p>
+<pre class="language-lua"><code class="language-lua"><span class="token comment">-- Define the colors</span>
+beautiful<span class="token punctuation">.</span>bg_normal <span class="token operator">=</span> <span class="token string">"#222222"</span>
+beautiful<span class="token punctuation">.</span>bg_focus <span class="token operator">=</span> <span class="token string">"#535d6c"</span>
+beautiful<span class="token punctuation">.</span>bg_urgent <span class="token operator">=</span> <span class="token string">"#ff0000"</span>
+beautiful<span class="token punctuation">.</span>bg_minimize <span class="token operator">=</span> <span class="token string">"#444444"</span>
+beautiful<span class="token punctuation">.</span>bg_systray <span class="token operator">=</span> beautiful<span class="token punctuation">.</span>bg_normal
+beautiful<span class="token punctuation">.</span>fg_normal <span class="token operator">=</span> <span class="token string">"#ffffff"</span>
+beautiful<span class="token punctuation">.</span>fg_focus <span class="token operator">=</span> <span class="token string">"#ffffff"</span>
+beautiful<span class="token punctuation">.</span>fg_urgent <span class="token operator">=</span> <span class="token string">"#ffffff"</span>
+beautiful<span class="token punctuation">.</span>fg_minimize <span class="token operator">=</span> <span class="token string">"#ffffff"</span>
+beautiful<span class="token punctuation">.</span>border_width <span class="token operator">=</span> <span class="token number">1</span>
+beautiful<span class="token punctuation">.</span>border_normal <span class="token operator">=</span> <span class="token string">"#000000"</span>
+beautiful<span class="token punctuation">.</span>border_focus <span class="token operator">=</span> <span class="token string">"#535d6c"</span>
+beautiful<span class="token punctuation">.</span>border_marked <span class="token operator">=</span> <span class="token string">"#91231c"</span></code></pre>
+<p>Esses são apenas exemplos. Existem muitas outras configurações que você pode personalizar, como o wallpaper, fontes e ícones. Para um guia completo sobre como criar seu próprio tema, consulte a <a href="https://awesomewm.org/doc/api/">documentação do Awesome WM</a> e ajuste conforme sua preferência.</p>
+<p>Com isso, você deve ter uma configuração básica do Awesome WM com seu próprio tema. Continue ajustando e personalizando até encontrar o ambiente perfeito para suas necessidades e preferências.</p>
+
+  </section>
+</article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>🄯  Camilo de Azevedo</p>
+    <nav>
+      <ul class="social-links">
+        <li>
+          <a href="https://github.com/Camilotk" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/2cazevedo/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://bsky.app/profile/camilotk.dev.br" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-bluesky"></i>
+          </a>
+        </li>
+        <li>
+          <a href="/rss.xml" target="_blank" rel="noopener noreferrer">
+            <i class="fa-solid fa-rss"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
+
+  <!-- JavaScript for Dark Mode and Language Selection -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const toggleButton = document.getElementById('dark-mode-toggle');
+      const languageSelect = document.getElementById('language-select');
+      const body = document.documentElement; // Use <html> instead of <body> for better control
+
+      // Initialize dark mode toggle
+      const darkMode = localStorage.getItem('darkMode');
+      if (darkMode === 'enabled') {
+        body.classList.add('dark-mode');
+      }
+
+      // Toggle dark mode on button click
+      toggleButton.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        // Save the user's preference to localStorage
+        if (body.classList.contains('dark-mode')) {
+          localStorage.setItem('darkMode', 'enabled');
+        } else {
+          localStorage.setItem('darkMode', 'disabled');
+        }
+      });
+
+      // Language selection
+      languageSelect.addEventListener('change', () => {
+        const selectedLang = languageSelect.value;
+        window.location.href = `/${selectedLang}/`;
+      });
+      
+      // Render LaTeX after DOM is ready
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false},
+          {left: "\\(", right: "\\)", display: false},
+          {left: "\\[", right: "\\]", display: true}
+        ]
+      });
+    });
+  </script>
+
+  <!-- LATEX -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+</body>
+</html>
