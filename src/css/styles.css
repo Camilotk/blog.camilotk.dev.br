@@ -154,6 +154,10 @@ main {
 
 /* -- */ 
 section {
-  text-align: justify;
+  text-align: justify; 
   white-space: pre-wrap;
+}
+
+code {
+  word-wrap: break-word;
 }
