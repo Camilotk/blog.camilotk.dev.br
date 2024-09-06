@@ -152,3 +152,8 @@ main {
   color: var(--color-dark-text);
 }
 
+/* --- */ 
+section {
+  text-align: justify;
+  white-space: pre-wrap;
+}
