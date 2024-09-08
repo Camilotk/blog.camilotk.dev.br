@@ -1,8 +1,8 @@
 ---
-title: "Awesome WM, meu Window Manager preferido"
+title: Awesome WM, meu Window Manager preferido
 date: 2024-06-15T19:39:00-03:00
 layout: post.njk
-image: "https://camilotk.dev.br/images/awesome_default.png" 
+image: /images/awesome_default 
 ---
 
 O Awesome WM é o meu gerenciador de janelas preferido, ele é altamente configurável e dinâmico para sistemas Linux, projetado para usuários que buscam um ambiente gráfico eficiente e adaptável. Ao contrário dos gerenciadores de janelas tradicionais como o i3, o Awesome permite uma personalização extensa através de scripts em Lua, o que é muito interessante já que Lua além de ser uma linguagem leve e simples pode ser usada para qualquer tarefa de próposito geral.
