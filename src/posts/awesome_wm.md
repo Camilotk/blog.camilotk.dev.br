@@ -21,7 +21,8 @@ O Debian também disponibiliza um pacote chamado [awesome-extra](https://package
 Depois de instalar o Awesome na sua distribuição Linux preferida, o próximo passo é logar no novo ambiente gráfico através do seu gerenciador de inicialização (display manager), como LightDM ou GDM, normalmente clicando em um botão no canto superior direito ou abaixo das credenciais de login e selecionando "Awesome WM".
 
 Após logar pela primeira vez, você verá uma tela mais ou menos assim:
-<<imagem>>
+
+![](/images/awesome_default.png)
 
 Aqui, é interessante que você aprenda alguns comandos úteis:
 

@@ -31,8 +31,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: var(--spacing); 
-  padding: var(--spacing);
-  flex: 1; 
+    flex: 1; 
 }
 
 .navbar {
@@ -112,6 +111,9 @@ main {
   .container {
     max-width: 90vw;
   }
+  img {
+    max-width: 85vw !important;
+  }
 
   .navbar__hamburger {
     display: block;
@@ -160,4 +162,15 @@ section {
 
 code {
   word-wrap: break-word;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 35vw;
+}
+
+.main-title {
+  margin: 15px 0 10px 0;
 }
