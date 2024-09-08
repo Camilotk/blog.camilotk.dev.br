@@ -2,7 +2,7 @@
 title: "Palestras"
 layout: "layout.njk"
 permalink: "/palestras/"
-image: /images/cover_blog.jpg
+image: /images/cover_img.jpeg
 ---
 
 # Palestras

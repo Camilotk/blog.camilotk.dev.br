@@ -1,6 +1,6 @@
 ---
 title: Awesome WM, meu Window Manager preferido
-date: 2024-06-15T19:39:00-03:00
+date: 2024-06-15
 layout: post.njk
 image: /images/awesome_default.png 
 ---

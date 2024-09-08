@@ -2,7 +2,7 @@
 title: "Favoritos"
 layout: "layout.njk"
 permalink: "/favoritos/"
-image: /images/cover_blog.jpg
+image: /images/cover_img.jpeg
 ---
 
 # Favoritos
