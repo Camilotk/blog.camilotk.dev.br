@@ -25,6 +25,12 @@
       }
     })();
   </script>
+
+  <meta property="og:title" content="{{ title | escape }}"/>
+  <meta property="og:url" content="https://camilotk.dev.br{{ page.url | url }}" />
+  <meta property="og:description" content="{{ description | escape }}" />
+  <meta property="og:image" content="https://camilotk.dev.br/images/awesome_default.png" />
+  <meta property="og:type" content="article" />
 </head>
 <body>
   <div class="container">
