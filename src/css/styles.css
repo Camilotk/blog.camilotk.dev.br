@@ -76,6 +76,7 @@ main {
   padding: 0 16px;
   border-top: 1px solid var(--color-primary);
   text-align: center;
+  margin-top: 15px;
 }
 
 .footer__social-links {
@@ -173,4 +174,12 @@ img {
 
 .main-title {
   margin: 15px 0 10px 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+td {
+  padding: 5px;
 }
