@@ -20,6 +20,12 @@ image: /images/cover_img.jpeg
       <i class="fa-solid fa-toolbox"></i> Tigerbeetle: Financial Database 1000x faster
     </a>
 </li>
+<h4>Livros</h4>
+<li>
+    <a href="https://www.oreilly.com/library/view/activitypub/9781098162733/" target="_blank">
+      <i class="fa-solid fa-book"></i> ActivityPub by Evan Prodromou
+    </a>
+</li>
 <!--
 <h4>Blog Posts</h4>
 <li>
