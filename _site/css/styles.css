@@ -183,3 +183,44 @@ li {
 td {
   padding: 5px;
 }
+
+/* Listas não ordenadas, desativado para facilitar o layout, need fix
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul > li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+ul > li::before {
+  content: "•";
+  flex: 0 0 2em;
+  text-align: right;
+  margin-right: 0.5em;
+}
+*/
+
+ol {
+  list-style-type: none; /* Remove default numbering */
+  counter-reset: item; /* Initialize a counter */
+  padding-left: 0; /* Remove default padding */
+}
+
+ol > li {
+  counter-increment: item; /* Increment the counter for each list item */
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+ol > li::before {
+  content: counter(item) "."; /* Use the counter value for numbering */
+  flex: 0 0 2em; /* Fixed width for the numbering */
+  text-align: right;
+  margin-right: 0.5em; /* Space between number and text */
+}

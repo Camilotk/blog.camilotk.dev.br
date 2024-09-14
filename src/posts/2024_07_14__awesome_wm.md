@@ -24,7 +24,7 @@ Depois de instalar o Awesome na sua distribuição Linux preferida, o próximo p
 
 Após logar pela primeira vez, você verá uma tela mais ou menos assim:
 
-![](/images/awesome_default.png)
+![Uma imagem que mostra o desktop padrão após a instalação do Awesome](/images/awesome_default.png)
 
 Aqui, é interessante que você aprenda alguns comandos úteis:
 
@@ -182,4 +182,3 @@ beautiful.border_marked = "#91231c"
 Esses são apenas exemplos. Existem muitas outras configurações que você pode personalizar, como o wallpaper, fontes e ícones. Para um guia completo sobre como criar seu próprio tema, consulte a [documentação do Awesome WM](https://awesomewm.org/doc/api/) e ajuste conforme sua preferência.
 
 Com isso, você deve ter uma configuração básica do Awesome WM com seu próprio tema. Continue ajustando e personalizando até encontrar o ambiente perfeito para suas necessidades e preferências.
-
