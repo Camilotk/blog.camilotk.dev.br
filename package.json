@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx @11ty/eleventy --serve",
+    "new:post": "node generate-post.js",
     "build": "npx @11ty/eleventy"
   },
   "keywords": [],
